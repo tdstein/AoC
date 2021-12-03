@@ -1,7 +1,9 @@
 from sys import stdin
 
+
 def parse(s):
     return int(s.split(' ')[1])
+
 
 x, y, aim = 0, 0, 0
 for line in stdin:

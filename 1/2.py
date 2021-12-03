@@ -1,6 +1,6 @@
 from sys import stdin
 
-cur, prev, inc, win = 0, 0, 0, [0,0,0]
+cur, prev, inc, win = 0, 0, 0, [0, 0, 0]
 for line in stdin:
     win[0] = win[1]
     win[1] = win[2]

@@ -1,32 +1,27 @@
-with open('in', 'r') as f:
-    lines = [ line.strip() for line in f ]
+from sys import stdin
 
-cc = len(lines[0])
-lines = [ int(line, 2) for line in lines ]
+vs = []
+for line in stdin:
+    line = line.strip()
+    cc = len(line)
+    vs.append(int(line, 2))
 
-ogr = lines
-ocr = lines
 
-for idx in range(0, cc):
-    if len(ogr) == 1:
-        break
-    m = pow(2, (cc - idx - 1))
-    vs = [ v & m for v in ogr]
-    pos = sum([1 for v in vs if v > 0])
-    if pos > int((len(vs) - 1) / 2):
-        ogr = [ ogr[idx] for idx, v in enumerate(vs) if v > 0] 
-    else:
-        ogr = [ ogr[idx] for idx, v in enumerate(vs) if v == 0]
+def x(vs, f):
+    for idx in range(0, cc):
+        mask = pow(2, (cc - idx - 1))
+        ms = [v & mask for v in vs]
+        s = sum([1 for v in ms if v > 0])
+        mid = int((len(ms) - 1) / 2)
+        if s > mid:
+            vs = [vs[idx] for idx, v in enumerate(ms) if f(v)]
+        else:
+            vs = [vs[idx] for idx, v in enumerate(ms) if not f(v)]
+        if len(vs) == 1:
+            return vs[0]
 
-for idx in range(0, cc):
-    if len(ocr) == 1:
-        break
-    m = pow(2, (cc - idx - 1))
-    vs = [ v & m for v in ocr]
-    pos = sum([1 for v in vs if v > 0])
-    if pos > int((len(vs) - 1) / 2):
-        ocr = [ ocr[idx] for idx, v in enumerate(vs) if v == 0] 
-    else:
-        ocr = [ ocr[idx] for idx, v in enumerate(vs) if v > 0]
 
-print(ogr[0] * ocr[0])
+ogr = x(vs, lambda x: x > 0)
+ocr = x(vs, lambda x: x == 0)
+
+print(ogr * ocr)
