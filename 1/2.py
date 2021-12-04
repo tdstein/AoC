@@ -1,16 +1,13 @@
 from sys import stdin
 
-cur, prev, inc, win = 0, 0, 0, [0, 0, 0]
+inc = 0
+win = [int(stdin.readline()), int(stdin.readline()), int(stdin.readline())]
+cur = sum(win)
 for line in stdin:
-    win[0] = win[1]
-    win[1] = win[2]
-    win[2] = int(line)
-    if win[0] != 0:
-        if cur == 0:
-            cur = sum(win)
-        else:
-            prev = cur
-            cur = sum(win)
-            if cur > prev:
-                inc += 1
+    win = win[1:] + [int(line)]
+    prev = cur
+    cur = sum(win)
+    if cur > prev:
+        inc += 1
+
 print(inc)
