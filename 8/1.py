@@ -1,6 +1,5 @@
-from sys import stdin
+s = 0
+for _, x in [x.split('|') for x in open(0)]:
+    s += len([y for y in x.split() if len(y) in set([2, 3, 4, 7])])
 
-s = set([2, 4, 3, 7])
-o = [[v for v in line.split('|')[1].strip().split(' ')] for line in stdin]
-r = sum([sum([1 for v in line if len(v) in s]) for line in o])
-print(r)
+print(s)

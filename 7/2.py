@@ -1,12 +1,11 @@
-from sys import stdin
 from math import floor, ceil
 
 
-def t(v):
-    return v*(v+1)/2
+def t(x): return x * (x + 1) / 2
 
 
-c = [int(v) for v in stdin.readline().strip().split(',')]
-m = float(sum(c)) / len(c)
-v = min([sum([t(abs(v - i)) for v in c]) for i in [int(floor(m)), int(ceil(m))]])
-print(v)
+for x in open(0):
+    n = [int(y) for y in x.split(',')]
+    m = float(sum(n)) / len(n)
+    v = min([sum([t(abs(v - i)) for v in n]) for i in [floor(m), ceil(m)]])
+    print(int(v))
