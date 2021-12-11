@@ -20,12 +20,14 @@ def flash(n, i, j):
 
 
 t = 0
+c = 0
 while True:
     n = [[y+1 for y in x] for x in n]
     for i, x in enumerate(n):
         for j, y in enumerate(x):
             (n, tt) = flash(n, i, j)
-    t += 1
+            t += tt
+    c += 1
     if sum([y for x in n for y in x]) == 0:
         break
-print(t)
+print(t, c)
