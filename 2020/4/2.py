@@ -41,7 +41,7 @@ for x in open(0):
                         print(k, v)
                         break
                 case 'ecl':
-                    if not (v in { 'amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth' }):
+                    if not (v in {'amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'}):
                         print(k, v)
                         break
                 case 'pid':
