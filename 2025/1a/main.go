@@ -32,22 +32,10 @@ func main() {
 		_, err := fmt.Sscanf(line, "%c%d", &direction, &ticks)
 		check(err)
 
-		for ticks > 0 {
-			ticks--
-
-			if direction == 'R' {
-				position += 1
-			} else {
-				position -= 1
-			}
-
-			if position == 100 {
-				position = 0
-			}
-
-			if position == -1 {
-				position = 99
-			}
+		if direction == 'R' {
+			position = (position + ticks) % 100
+		} else {
+			position = (((position - ticks) % 100) + 100) % 100
 		}
 
 		if position == 0 {
