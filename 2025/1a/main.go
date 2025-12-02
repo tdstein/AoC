@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"path/filepath"
 )
 
 func check(e error) {
@@ -18,8 +17,12 @@ func main() {
 	password := 0
 	position := 50
 
-	path := filepath.Join("..", "1.in")
-	f, err := os.Open(path)
+	filename := "1.in"
+	if len(os.Args) > 1 {
+		filename = os.Args[1]
+	}
+
+	f, err := os.Open(filename)
 	check(err)
 	defer f.Close()
 

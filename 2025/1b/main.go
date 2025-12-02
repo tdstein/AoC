@@ -18,7 +18,12 @@ func main() {
 	password := 0
 	position := 50
 
-	path := filepath.Join("..", "1.in")
+	filename := "1.in"
+	if len(os.Args) > 1 {
+		filename = os.Args[1]
+	}
+
+	path := filepath.Join(filename)
 	f, err := os.Open(path)
 	check(err)
 	defer f.Close()
