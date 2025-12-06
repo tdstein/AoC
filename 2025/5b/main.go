@@ -15,6 +15,7 @@ func check(e error) {
 	}
 }
 
+// https://algo.monster/liteproblems/56
 func merge(xs [][]int) [][]int {
 	var st, ed int
 	st = xs[0][0]
