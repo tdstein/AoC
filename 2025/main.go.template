@@ -1,0 +1,45 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
+
+func check(e error) {
+	if e != nil {
+		panic(e)
+	}
+}
+
+func main() {
+
+	filename := "1.sample"
+	// filename = "1.in"
+	if len(os.Args) > 1 {
+		filename = os.Args[1]
+	}
+
+	f, err := os.Open(filename)
+	check(err)
+	defer f.Close()
+
+	result := 0
+	scanner := bufio.NewScanner(f)
+	for scanner.Scan() {
+		line := scanner.Text()
+
+		// var input []string
+		for s := range strings.SplitSeq(line, "") {
+			fmt.Printf(s)
+			// v, err := strconv.Atoi(s)
+			// check(err)
+
+			// input = append(input, v)
+
+		}
+		println()
+	}
+	fmt.Println(result)
+}
