@@ -28,15 +28,14 @@ func main() {
 	result := 0
 	scanner := bufio.NewScanner(f)
 
-	i := -1
 	var xs []int
 	for scanner.Scan() {
 		line := scanner.Text()
 		s := strings.Split(line, "")
 
-		if i == -1 {
-			i = slices.Index(s, "S")
+		if xs == nil {
 			xs = make([]int, len(s))
+			i := slices.Index(s, "S")
 			xs[i] = 1
 			continue
 		}
