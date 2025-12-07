@@ -41,5 +41,5 @@ func main() {
 		}
 		println()
 	}
-	fmt.Println(result)
+	println(result)
 }
